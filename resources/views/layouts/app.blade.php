@@ -24,14 +24,14 @@
             }
         </style>
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-gray-100 w-screen">
         
-        <div class="container px-24 mt-8 mx-auto">
-            <header class="flex items-center mb-12">
-                <h1 class="text-6xl">The Dog House</h1>
-                <a href="{{ route('pictures.create') }}" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Add your own dog
-                </a>
+        <div class="container lg:px-24 mt-8 mx-auto">
+            <header class="flex flex-col lg:flex-row justify-between items-center mb-12">
+                <h1 class="text-6xl text-center">The Dog House</h1>
+                <div class="mt-10 lg:mt-0">
+                    <a href="{{ route('pictures.create') }}" class="mx-auto my-3 bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded">Add your own dog</a>
+                </div>
             </header>
 
             @yield('content')
