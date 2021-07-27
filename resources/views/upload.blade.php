@@ -10,13 +10,18 @@
             <label class="mr-2" for="name">Name: </label>
             <input class="border p-2" type="text" id="name" name="name">
         </div>
-        <div class="bg-gray-200 p-4 mt-4 w-full flex flex-col items-center">
-            <input class="my-4 hidden" type="file" id="image-selection" name="image">
-            <label class="my-4 bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-4 rounded" for="image-selection">Select image</label>
-            <span>
-                <strong>Chosen file:</strong>
-                <span id="file-path">None</span>
-            </span>
+        <div class="bg-gray-200 p-4 mt-4 w-full flex flex-col lg:flex-row lg:justify-around items-center">
+            <div class="flex flex-col items-center">
+                <input class="my-4 hidden" type="file" id="image-selection" name="image">
+                <label class="my-4 bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-4 rounded" for="image-selection">Select image</label>
+                <span>
+                    <strong>Chosen file:</strong>
+                    <span id="file-path">None</span>
+                </span>
+            </div>
+            <div class="mt-2 w-auto" id="preview-container">
+                <img src="" id="preview"/>
+            </div>
         </div>
         <input type="submit" value="Upload" class="m-4 bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-4 rounded">
     </form>
@@ -25,8 +30,24 @@
 <script>
     const fileInputButton = document.getElementById('image-selection');
     const selectedFile = document.getElementById('file-path');
-    fileInputButton.addEventListener('change', (e) => {
-        selectedFile.textContent = e.target.files[0].name;
+    const previewContainer = document.getElementById('preview-container');
+    const preview = document.getElementById('preview');
+
+    fileInputButton.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            previewContainer.classList.remove('hidden');
+            selectedFile.textContent = file.name;
+
+            reader.addEventListener("load", function() {
+                preview.setAttribute("src", this.result);
+            });
+
+            reader.readAsDataURL(file);
+        }
     });
 </script>
 
