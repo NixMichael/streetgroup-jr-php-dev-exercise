@@ -62,8 +62,13 @@ class PictureControllerTest extends TestCase
         $this->assertFileExists(storage_path('app/public/' . $file->hashName()));
     }
 
-    // public function test_upvote_a_dog()
-    // {
+    public function test_upvote_a_dog()
+    {
+        $testPicture = Picture::factory()->create(['id' => 1]);
 
-    // }
+        $response = $this->post(route('pictures.upvote',[$testPicture->id]));
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
+    }
 }
