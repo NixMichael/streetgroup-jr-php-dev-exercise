@@ -24,7 +24,7 @@
             }
         </style>
     </head>
-    <body class="bg-gray-100 w-screen">
+    <body class="bg-gray-100">
         
         <div class="container lg:px-24 mt-8 mx-auto">
             <header class="flex flex-col lg:flex-row justify-between items-center mb-12">
