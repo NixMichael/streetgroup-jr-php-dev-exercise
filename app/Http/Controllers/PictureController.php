@@ -43,13 +43,11 @@ class PictureController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp'
         ]);
 
-        $imageName = $request->name . '.' . $request->image->extension();
-
-        $request->image->storeAs('public', $imageName);
+        $request->image->store('public');
 
         Picture::create([
             'name' => $request->name,
-            'file_path' => $imageName
+            'file_path' => $request->image->hashName()
         ]);
 
         return redirect('/');
