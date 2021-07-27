@@ -28,7 +28,7 @@
         
         <div class="container lg:px-24 mt-8 mx-auto">
             <header class="flex flex-col lg:flex-row justify-between items-center mb-12">
-                <h1 class="text-6xl text-center">The Dog House</h1>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl text-center">The Dog House</h1>
                 <div class="mt-10 lg:mt-0">
                 @if(request()->is('pictures/create'))
                     <a href="/" class="mx-auto my-3 bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded">Home</a>
