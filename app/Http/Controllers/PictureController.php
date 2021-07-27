@@ -61,9 +61,9 @@ class PictureController extends Controller
      */
     public function upvote(Request $request, Picture $picture)
     {
-        $id = $request->id;
+        $incVotes = $picture->votes + 1;
 
-        Picture::find($id)->increment('votes');
+        $picture->update(['votes' => $incVotes]);
 
         return redirect('/');
     }
