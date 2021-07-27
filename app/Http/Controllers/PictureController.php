@@ -38,7 +38,21 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        // See PictureControllerTest to see what this should do
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp'
+        ]);
+
+        $imageName = $request->name . '.' . $request->image->extension();
+
+        $request->image->storeAs('public', $imageName);
+
+        Picture::create([
+            'name' => $request->name,
+            'file_path' => $imageName
+        ]);
+
+        return redirect('/');
     }
 
     /**
