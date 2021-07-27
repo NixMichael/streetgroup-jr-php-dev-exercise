@@ -30,7 +30,11 @@
             <header class="flex flex-col lg:flex-row justify-between items-center mb-12">
                 <h1 class="text-6xl text-center">The Dog House</h1>
                 <div class="mt-10 lg:mt-0">
+                @if(request()->is('pictures/create'))
+                    <a href="/" class="mx-auto my-3 bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded">Home</a>
+                @else
                     <a href="{{ route('pictures.create') }}" class="mx-auto my-3 bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded">Add your own dog</a>
+                @endif
                 </div>
             </header>
 
